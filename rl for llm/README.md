@@ -3,27 +3,37 @@ hello-py
 
 Setup instructions:
 
-1. Set up `ANTHROPIC_API_KEY` environment variable:
+1. Clone the repository:
+   ```
+   git clone https://github.com/preferencemodel/hello-py.git
+   ```
+
+2. Navigate to the project directory:
+   ```
+   cd hello-py
+   ```
+
+3. Set up `ANTHROPIC_API_KEY` environment variable:
    ```
    export ANTHROPIC_API_KEY=your_api_key_here
    ```
 
-2. Install dependencies:
+4. Run the agent:
    ```
-   pip3 install .
-   ```
-
-3. Run the agent:
-   ```
-   python3 main.py
+   uv run main.py
    ```
 
-4. Run the tests:
-   ```
-   pytest
-   ```
+### Task Overview
 
-5. All required changes belong in `task.py`
+The bundled RL task asks the agent to implement a compact Listen, Attend and Spell
+style recognizer with:
+
+- a PyTorch listener/speller architecture that incorporates `nn.MultiheadAttention`
+- training on the synthetic dataset defined in `task_resources.py`
+- a WER-aware loss adjustment surfaced in the reported metrics
+- a submission module exposing `train_and_evaluate()`
+
+See `task.py` for the exact prompt, tools, and grading logic.
 
 
 ## Execution Modes
